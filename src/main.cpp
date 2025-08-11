@@ -44,6 +44,8 @@ int main() {
     glViewport(0, 0, 800, 600);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+    double green = 1.0f;
+
     // Main render loop
     while (!glfwWindowShouldClose(window)) {
         // Input handling
@@ -52,12 +54,17 @@ int main() {
         }
 
         // Clear the screen with a color (RGBA)
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClearColor(0.2f, green, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         // Swap buffers and poll events
         glfwSwapBuffers(window);
         glfwPollEvents();
+
+        if (green > 0) 
+            green -= 0.001f;
+        else 
+            green = 1.0f;
     }
 
     // Clean up
