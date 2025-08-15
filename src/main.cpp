@@ -17,7 +17,7 @@ int main() {
     // Configure GLFW
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
     
     #ifdef __APPLE__
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // Required on macOS
@@ -56,6 +56,18 @@ int main() {
         // Clear the screen with a color (RGBA)
         glClearColor(0.2f, green, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        glBegin(GL_TRIANGLES); {
+            glColor3f(1.0f, 0.0f, 0.0f);  // Red
+            glVertex2f( 0.0f,  0.5f);    // Top vertex
+
+            glColor3f(0.0f, 1.0f, 0.0f);  // Green
+            glVertex2f(-0.5f, -0.5f);    // Bottom left
+
+            glColor3f(0.0f, 0.0f, 1.0f);  // Blue
+            glVertex2f( 0.5f, -0.5f);    // Bottom right
+        }
+        glEnd();
 
         // Swap buffers and poll events
         glfwSwapBuffers(window);
