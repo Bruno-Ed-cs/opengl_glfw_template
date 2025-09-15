@@ -2,7 +2,7 @@
 
 Para compilar no MSVC basta abrir o projeto na ide e compilar o executavel opengl_class
 
-# Compilaçã
+# Compilação
 
 ## Linux
 
