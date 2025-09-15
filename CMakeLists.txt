@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.28)
-
 project(opengl_class LANGUAGES CXX)
 
+# Explicitly find X11 components
+find_package(X11 REQUIRED)
 find_package(OpenGL REQUIRED)
 
 enable_language(C)
@@ -22,8 +23,10 @@ target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 add_subdirectory(dependencies/glfw-3.4 glfw)
 
-target_link_libraries(${PROJECT_NAME} OpenGL::GL glfw glad)
-
-
-
-
+# Link against X11 libraries
+target_link_libraries(${PROJECT_NAME} 
+    OpenGL::GL 
+    glfw 
+    glad
+    X11::X11
+)
